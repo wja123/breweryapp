@@ -1,6 +1,6 @@
   <nav>
     <div class="nav-wrapper grey darken-4">
-      <a href="#!" class="brand-logo">SCAFFOLD</a>
+      <a href="#!" class="brand-logo">BeerApp</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a ng-if="state==='register'" ui-sref="login">Login</a></li>
@@ -19,25 +19,21 @@
       <div class="row">
         <form name="userAuth" class="col s12" ng-submit="submitUser(userData)">
           <div ng-if="state==='register'" class="row">
-            <div class="input-field col s6">
-              <input required name="firstname" id="first_name" type="text" class="validate" ng-model="userData.firstName">
-              <label for="first_name">First Name</label>
-            </div>
-            <div class="input-field col s6">
-              <input required name ="lastname" id="last_name" type="text" class="validate" ng-model="userData.lastName">
-              <label for="last_name">Last Name</label>
-            </div>
+                    <div class="input-field col s12">
+              <input required name="firstname" id="first_name" type="text" class="validate" ng-model="userData.name">
+              <label for="first_name">Name</label>
           </div>
+           </div>
           <div ng-if="state==='register'" class="row">
             <div class="input-field col s12">
-              <input required validate name="email" id="email" type="email" class="validate" ng-model="userData.email">
-              <label for="email">Email</label>
+              <input required validate name="image" id="image" type="text" class="validate" ng-model="userData.image">
+              <label for="email">Image Url</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <input required id="username" type="text" class="validate" ng-model="userData.username">
-              <label for="username">Username</label>
+              <input required validate name="email" id="email" type="email" class="validate" ng-model="userData.email">
+              <label for="email">Email</label>
             </div>
           </div>
           <div class="row">

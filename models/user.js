@@ -5,16 +5,14 @@ var jwt = require('jwt-simple');
 var bcrypt = require('bcryptjs');
 var dotenv = require('dotenv').config();
 var moment = require('moment');
+var BeerList = require('./beer');
+
 var User;
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
 var userSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
+    name: {
         type: String,
         required: true
     },
@@ -23,13 +21,12 @@ var userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    username: {
-        type: String,
-        required: true,
-    },
     password: {
         type: String,
         required: true
+    },
+    image: {
+        type: String,
     },
     joined: {
         type: Date,
@@ -41,7 +38,7 @@ userSchema.methods.generateToken = function() {
     var payload = {
         _id: this._id,
         iat: Date.now(),
-        exp:moment().add(1,'day').unix()
+        exp: moment().add(1, 'day').unix()
     }
     var token = jwt.encode(payload, JWT_SECRET);
     return token;
@@ -98,8 +95,16 @@ userSchema.statics.authMiddleware = function(req, res, next) {
         } else {
             var dbUser = user;
             dbUser.password = null;
+            BeerList.find({userId:dbUser._id}, function(err,beerData){
+                if(err || !beerData){
+                    req.beers = [];
+                }
+                else{
+            req.beers = beerData;  
+                }
             req.user = dbUser;
             next();
+            })
         }
     });
 

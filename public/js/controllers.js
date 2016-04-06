@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('myApp');
+var app = angular.module('beerApp');
 
 app.controller('mainCtrl', function($state, $scope) {
     console.log('mainCtrl');
@@ -9,13 +9,19 @@ app.controller('mainCtrl', function($state, $scope) {
     });
 });
 
-app.controller('authCtrl', function($state, $scope) {
+app.controller('authCtrl', function($state, $scope, authService) {
     $(document).ready(function() {
         $(".button-collapse").sideNav();
     });
     console.log('authCtrl');
     $scope.state = $state.current.name;
+
+    $scope.submitUser = function(userData){
+        
+    }
 });
+
+
 
 app.filter('titlecase', function() {
     return function(item) {
