@@ -1,0 +1,9 @@
+button:disabled {
+    color:#717782;
+    background-color: #999;
+}
+
+button:disabled:hover {
+    color:#717782;
+    background-color: #999;
+}
