@@ -95,7 +95,7 @@ userSchema.statics.authMiddleware = function(req, res, next) {
         } else {
             var dbUser = user;
             dbUser.password = null;
-            BeerList.find({userId:dbUser._id}, function(err,beerData){
+            BeerList.find({userId:dbUser._id}).select("beerDbId").exec(function(err,beerData){
                 if(err || !beerData){
                     req.beers = [];
                 }

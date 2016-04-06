@@ -19,6 +19,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'html/auth.html',
             controller: 'authCtrl'
         })
+        .state('member', {
+            url: '/member',
+            templateUrl: 'html/member.html',
+            controller: 'memberCtrl'
+        })
+        .state('profile', {
+            url: '/profile',
+            templateUrl: 'html/profile.html',
+            controller: 'profileCtrl'
+        })
 
     $urlRouterProvider.otherwise('/');
 });
