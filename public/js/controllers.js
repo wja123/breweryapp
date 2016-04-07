@@ -21,7 +21,6 @@ app.controller('authCtrl', function($state, $scope, authService) {
         $scope.submitted = true;
         if($state.current.name ==='register'){
         authService.register(userData).then(function(success){
-            console.log(success);
             $state.go('member', {user:success.data});
         }, function(err){
             console.log(err);
@@ -40,7 +39,7 @@ app.controller('authCtrl', function($state, $scope, authService) {
 
 app.controller('memberCtrl', function($state, $scope, $stateParams, authService) {
     console.log('memberCtrl');
-    console.log($stateParams);
+    $scope.user = $stateParams.user;
     $(document).ready(function() {
         $(".button-collapse").sideNav();
     });
@@ -55,13 +54,14 @@ app.controller('memberCtrl', function($state, $scope, $stateParams, authService)
 });
 
 app.controller('profileCtrl', function($state, $scope, $stateParams, profileService, authService) {
-    console.log('profileCtrl');
-        console.log($stateParams.user);
+    $scope.submitted=false;
+        console.log($stateParams);
+        $scope.userData = $stateParams.user;
+        $scope.user = $stateParams.user;
     $(document).ready(function() {
         $(".button-collapse").sideNav();
     });
 
-$scope.submitted = false;
     $scope.state = $state.current.name;
 
     $scope.updateUser = function(userData){
@@ -84,6 +84,43 @@ $scope.submitted = false;
     }
 
 });
+
+
+app.controller('beerCtrl', function($state, $scope, $stateParams, profileService, authService) {
+    $scope.submitted=false;
+        console.log($stateParams);
+        $scope.userData = $stateParams.user;
+        $scope.user = $stateParams.user;
+    $(document).ready(function() {
+        $(".button-collapse").sideNav();
+    });
+
+    $scope.state = $state.current.name;
+
+    $scope.updateUser = function(userData){
+        $scope.submitted = true;
+        console.log(userData);
+        profileService.updateProfile(userData).then(function(success){
+            $state.go('beerlist');
+        }, function(err){
+            $scope.submitted = false;
+            console.log(err);
+        });
+    }
+
+        $scope.logout = function(){
+        authService.logout().then(function(success){
+            $state.go('home');
+        },function(err){
+            console.log(err);
+        })
+    }
+
+});
+
+
+
+
 
 
 

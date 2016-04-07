@@ -31,6 +31,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'profileCtrl',
             params:{user:null}
         })
+                .state('randombeer', {
+            url: '/randombeer',
+            templateUrl: 'html/randombeer.html',
+            controller: 'beerCtrl',
+            params:{user:null}
+        })
 
     $urlRouterProvider.otherwise('/');
 });
