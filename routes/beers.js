@@ -12,7 +12,7 @@ router.use(User.authMiddleware);
 
 router.get('/beer', function(req, res) {
     getRandomBeer(req.beers,function(beer) {
-        res.status(200).send(beer);
+        res.status(200).send(beer.body);
     });
 });
 
