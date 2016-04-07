@@ -22,12 +22,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('member', {
             url: '/member',
             templateUrl: 'html/member.html',
-            controller: 'memberCtrl'
+            controller: 'memberCtrl',
+            params:{user:null}
         })
         .state('profile', {
             url: '/profile',
             templateUrl: 'html/profile.html',
-            controller: 'profileCtrl'
+            controller: 'profileCtrl',
+            params:{user:null}
         })
 
     $urlRouterProvider.otherwise('/');

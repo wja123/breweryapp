@@ -1,41 +1,42 @@
+  <nav>
+    <div class="nav-wrapper grey darken-4">
+      <a href="#!" class="brand-logo">Beer App</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a ui-sref="profile">Profile</a></li>
+        <li><a ui-sref="randombeer">Random Beer</a></li>
+        <li><a ui-sref="beerlist">Your Beers</a></li>
+        <li><a ng-click="logout()">Logout</a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a ui-sref="profile">Profile</a></li>
+        <li><a ui-sref="randombeer">Random Beer</a></li>
+        <li><a ui-sref="beerlist">Your Beers</a></li>
+        <li><a ng-click="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
 <div ng-hide ="submitted" class="row">
-    <div class="col s6 offset-s3"><span class="flow-text">{{state | titlecase}}</span></div>
+    <div class="col s6 offset-s3"><span class="flow-text">Profile</span></div>
     <div class="col s6 offset-s3"><span class="flow-text">
       <div class="row">
         <form name="userAuth" class="col s12" ng-submit="submitUser(userData)">
-          <div ng-if="state==='register'" class="row">
-                    <div class="input-field col s12">
+          <div class="row">
+            <div class="input-field col s12">
               <input required name="firstname" id="first_name" type="text" class="validate" ng-model="userData.name">
-              <label for="first_name">Name</label>
+              <label class ="active" for="first_name">Name</label>
           </div>
            </div>
-          <div ng-if="state==='register'" class="row">
+          <div class="row">
             <div class="input-field col s12">
               <input required validate name="image" id="image" type="text" class="validate" ng-model="userData.image">
-              <label for="email">Image Url</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input required validate name="email" id="email" type="email" class="validate" ng-model="userData.email">
-              <label for="email">Email</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input required id="password" type="password" class="validate" ng-model="userData.password">
-              <label for="password">Password</label>
-            </div>
-          </div>
-          <div ng-if="state==='register'"class="row">
-            <div class="input-field col s12">
-              <input required id="password" type="password" class="validate" ng-model="userData.passwordConf">
-              <label for="password">Confirm Password</label>
+              <label for="image">Image Url</label>
             </div>
           </div>
           <div class="row">
             <div class="col s4 offset-s4">
-              <button ng-disabled="!userAuth.$valid || (state==='register' && (userData.password !== userData.passwordConf))" class="btn waves-effect waves-light" type="submit" name="action">{{state | titlecase}}
+              <button class="btn waves-effect waves-light" type="submit" name="action">Update
               </button>
             </div>
           </div>

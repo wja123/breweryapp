@@ -27,7 +27,7 @@
           <div ng-if="state==='register'" class="row">
             <div class="input-field col s12">
               <input required validate name="image" id="image" type="text" class="validate" ng-model="userData.image">
-              <label for="email">Image Url</label>
+              <label for="image">Image Url</label>
             </div>
           </div>
           <div class="row">
@@ -58,10 +58,10 @@
       </div>
     </span></div>
   </div>
-  <div class="row">
+  <div ng-show ="submitted" class="row">
     <div class="col s12">
       <div class="col s6 offset-s3">
-        <div ng-show ="submitted" class="preloader-wrapper big active">
+        <div  class="preloader-wrapper big active">
           <div class="spinner-layer spinner-blue">
             <div class="circle-clipper left">
               <div class="circle"></div>

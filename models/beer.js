@@ -22,5 +22,4 @@ var BeerListSchema = new mongoose.Schema({
 
 var BeerList = mongoose.model('BeerList',BeerListSchema);
 
-
 module.exports = BeerList;
