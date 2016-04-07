@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
 });
 
 
-
 router.post('/register', function(req, res) {
     User.register(req.body, function(err, user) {
         if (err || !user) {

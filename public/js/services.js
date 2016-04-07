@@ -30,4 +30,8 @@ app.service('beerService', function($http){
   this.getRandomBeer = function(){
     return $http.get("/beers/beer");
   }
+
+  this.saveRandomBeer = function(beerData){
+    return $http.post("/beers/beer", beerData);
+  }
 })

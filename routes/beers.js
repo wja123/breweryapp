@@ -61,6 +61,4 @@ router.delete('/beer/:id', function(req, res) {
     })
 });
 
-
-
 module.exports = router;

@@ -104,7 +104,7 @@ app.controller('beerCtrl', function($state, $scope, $stateParams, profileService
     $scope.newBeer = function() {
         getBeer();
     }
-    
+
     $scope.submitted = true;
 
     function getBeer() {
@@ -117,6 +117,18 @@ app.controller('beerCtrl', function($state, $scope, $stateParams, profileService
             console.log(err);
             return;
         });
+    }
+    $scope.addBeer = function(beer){
+        beer.beerdata = angular.copy($scope.randombeer);
+        beer.beerDbId = $scope.randombeer.id;
+        beer.uerId = $scope.user._id;
+        beerService.saveRandomBeer(beer).then(function(success){
+            $scope.randomBeer ={};
+            getBeer();
+        },
+        function(err){
+            console.log(err);
+        })
     }
 
     $scope.logout = function() {
